@@ -92,44 +92,44 @@ p_genre char(25) not null
 .import data/accessories.csv accessories
 
 SELECT '---------------------------------#1------------------------------------';
-SELECT 'Show all items purchased by customer Uma Shaw.';
+--Show all items purchased by customer Uma Shaw.
 
 SELECT i_name
 FROM customer, orders, contains, items, sells
 WHERE c_custid = o_custid AND o_orderid = co_orderid AND co_stockid = se_stockid AND co_storeid = se_storeid AND se_itemid = i_itemid AND c_name = "Uma Shaw";
 
 SELECT '---------------------------------#2------------------------------------';
-SELECT 'Show all items that are games with any genre linked to Horror';
+--Show all items that are games with any genre linked to Horror
 
 SELECT i_name, i_platform
 FROM items, games
 WHERE (i_type = 'G' AND i_genericid = g_gameid) AND lower(g_genre) LIKE lower('%Horror%');
 
 SELECT '---------------------------------#3------------------------------------';
-SELECT 'Show all items that have II in the title';
+--Show all items that have II in the title
 
 SELECT i_name, i_platform
 FROM items
 WHERE lower(i_name) LIKE lower('%II%');
 
 SELECT '---------------------------------#4------------------------------------';
-SELECT 'Show all items related to the PS4';
+--Show all items related to the PS4
 
 SELECT *
 FROM items
 WHERE lower(i_platform) LIKE lower('playstation 4');
 
 SELECT '---------------------------------#5------------------------------------';
-SELECT 'Storefront TotallyLegitShop (ID#1) wants to list a new item, 5 pre-owned quantities of The Last of Us Part II for PlayStation 4 (ID#1) at 69.99 ';
+--Storefront TotallyLegitShop (ID#1) wants to list a new item, 5 pre-owned quantities of The Last of Us Part II for PlayStation 4 (ID#1) at 69.99
 
 INSERT INTO sells VALUES(1, 4, 1, 69.99, 5, 'Y');
 SELECT *
 FROM sells;
 
 SELECT '---------------------------------#6, #7, #8------------------------------------';
-SELECT 'A new video game, Cyberpunk 2077 is coming out soon for PS4 and Xbox One, so the website is adding it into the game database so that sellers can list it. ';
+--A new video game, Cyberpunk 2077 is coming out soon for PS4 and Xbox One, so the website is adding it into the game database so that sellers can list it.
 
-INSERT INTO games VALUES(6, 'Cyberpunk 2077', 'B', "First Person Shooter RPG", 'RP', 2020);
+INSERT INTO games VALUES(6, 'Cyberpunk 2077', 'B', 'First Person Shooter RPG', 'RP', 2020);
 INSERT INTO items VALUES(13, 6, 'Cyberpunk 2077', 'PlayStation 4', 'G');
 INSERT INTO items VALUES(13, 6, 'Cyberpunk 2077', 'Xbox One', 'G');
 
@@ -142,7 +142,7 @@ SELECT *
 FROM items;
 
 SELECT '---------------------------------#9------------------------------------';
-SELECT 'Hypothetically, Cyperpunk 2077 is rated M so the database should reflect that.';
+--Hypothetically, Cyperpunk 2077 is rated M so the database should reflect that
 
 UPDATE games
 SET g_rating = 'M'
@@ -151,3 +151,16 @@ SELECT *
 FROM games;
 
 SELECT '---------------------------------#10------------------------------------';
+--A new storefront registers to the website
+
+INSERT INTO storefront VALUES(8, 'Sweet Spot Games', '252 W North Dr', '(359) 349-5043');
+
+SELECT *
+FROM storefront;
+
+SELECT '---------------------------------#11------------------------------------';
+--Output the phone number of the store that Customer ID#20 ordered from
+
+SELECT s_phone
+FROM customer, orders, storefront
+WHERE o_custid = c_custid AND s_storeid = o_storeid AND c_custid = 20;

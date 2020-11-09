@@ -22,16 +22,16 @@ a_type char(25) not null
 
 CREATE TABLE customer(
 c_custid decimal(10,0) not null,
-c_name char(25) not null,
-c_addy varchar(50) not null,
-c_phone char(10) not null
+c_name varchar(40) not null,
+c_addy varchar(100) not null,
+c_phone char(15) not null
 );
 
 CREATE TABLE storefront(
 s_storeid decimal(10,0) not null,
 s_name char(25) not null,
 s_addy varchar(50) not null,
-s_phone char(10) not null
+s_phone char(14) not null
 );
 
 CREATE TABLE orders (
@@ -50,3 +50,10 @@ i_name varchar(25) not null,
 i_platform varchar(25) not null,
 i_type char(25) not null
 );
+
+.mode "csv"
+.separator "|"
+.import data/customer.csv customer
+
+SELECT *
+FROM customer;

@@ -91,6 +91,25 @@ p_genre char(25) not null
 .import data/contains.csv contains
 .import data/accessories.csv accessories
 
+SELECT '---------------------------------#1------------------------------------';
+SELECT 'Show all items purchased by customer Uma Shaw.';
+
 SELECT i_name
 FROM customer, orders, contains, items, sells
 WHERE c_custid = o_custid AND o_orderid = co_orderid AND co_stockid = se_stockid AND co_storeid = se_storeid AND se_itemid = i_itemid AND c_name = "Uma Shaw";
+
+SELECT '---------------------------------#2------------------------------------';
+SELECT 'Show all items that are games with any genre linked to Horror';
+
+SELECT i_name, i_platform
+FROM items, games
+WHERE (i_type = 'G' AND i_genericid = g_gameid) AND lower(g_genre) LIKE lower('%Horror%');
+
+SELECT '---------------------------------#3------------------------------------';
+SELECT 'Show all items that have II in the title';
+
+SELECT i_name, i_platform
+FROM items
+WHERE lower(i_name) LIKE ('%II%');
+
+SELECT '---------------------------------#4------------------------------------';

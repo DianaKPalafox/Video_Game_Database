@@ -10,14 +10,15 @@ g_gameid decimal(10,0) not null,
 g_name char(25) not null,
 g_solo char(1) not null,
 g_genre char(25) not null,
-g_rating char(3) not null,
+g_rating char(4) not null,
 g_year decimal(4,0) not null
 );
 
 CREATE TABLE accessories(
 a_accid decimal(10,0) not null,
 a_name char(25) not null,
-a_type char(25) not null
+a_type char(25) not null,
+a_official char(1) not null
 );
 
 CREATE TABLE customer(
@@ -34,12 +35,11 @@ s_addy varchar(50) not null,
 s_phone char(14) not null
 );
 
-CREATE TABLE orders (
+CREATE TABLE orders(
 o_orderid decimal(12,0) not null,
 o_custid decimal(10,0) not null,
 o_storeid decimal(10,0) not null,
-o_receiptdate date not null,
-o_shipdate date not null,
+o_orderdate date not null,
 o_orderstatus char(1) not null
 );
 
@@ -48,12 +48,36 @@ i_itemid decimal(10,0) not null,
 i_genericid decimal(10,0) not null,
 i_name varchar(25) not null,
 i_platform varchar(25) not null,
-i_type char(25) not null
+i_type char(1) not null
 );
 
 .mode "csv"
 .separator "|"
 .import data/customer.csv customer
+.import data/storefront.csv storefront
+.import data/games.csv games
+.import data/items.csv items
+.import data/orders.csv orders
 
 SELECT *
 FROM customer;
+
+SELECT '--------------------------------------------------';
+
+SELECT *
+FROM storefront;
+
+SELECT '--------------------------------------------------';
+
+SELECT *
+FROM games;
+
+SELECT '--------------------------------------------------';
+
+SELECT *
+FROM items;
+
+SELECT '--------------------------------------------------';
+
+SELECT *
+FROM orders;

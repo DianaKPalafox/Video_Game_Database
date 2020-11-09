@@ -110,6 +110,44 @@ SELECT 'Show all items that have II in the title';
 
 SELECT i_name, i_platform
 FROM items
-WHERE lower(i_name) LIKE ('%II%');
+WHERE lower(i_name) LIKE lower('%II%');
 
 SELECT '---------------------------------#4------------------------------------';
+SELECT 'Show all items related to the PS4';
+
+SELECT *
+FROM items
+WHERE lower(i_platform) LIKE lower('playstation 4');
+
+SELECT '---------------------------------#5------------------------------------';
+SELECT 'Storefront TotallyLegitShop (ID#1) wants to list a new item, 5 pre-owned quantities of The Last of Us Part II for PlayStation 4 (ID#1) at 69.99 ';
+
+INSERT INTO sells VALUES(1, 4, 1, 69.99, 5, 'Y');
+SELECT *
+FROM sells;
+
+SELECT '---------------------------------#6, #7, #8------------------------------------';
+SELECT 'A new video game, Cyberpunk 2077 is coming out soon for PS4 and Xbox One, so the website is adding it into the game database so that sellers can list it. ';
+
+INSERT INTO games VALUES(6, 'Cyberpunk 2077', 'B', "First Person Shooter RPG", 'RP', 2020);
+INSERT INTO items VALUES(13, 6, 'Cyberpunk 2077', 'PlayStation 4', 'G');
+INSERT INTO items VALUES(13, 6, 'Cyberpunk 2077', 'Xbox One', 'G');
+
+SELECT *
+FROM games
+WHERE g_gameid = 6;
+SELECT '-----------------------------------------------------------------------';
+
+SELECT *
+FROM items;
+
+SELECT '---------------------------------#9------------------------------------';
+SELECT 'Hypothetically, Cyperpunk 2077 is rated M so the database should reflect that.';
+
+UPDATE games
+SET g_rating = 'M'
+WHERE g_name = 'Cyberpunk 2077';
+SELECT *
+FROM games;
+
+SELECT '---------------------------------#10------------------------------------';

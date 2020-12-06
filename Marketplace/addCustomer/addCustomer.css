@@ -1,0 +1,60 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#eeefd9ba;  
+    font-family: 'Arial';  
+}  
+.login{  
+        width: 382px;  
+        overflow: hidden;  
+        margin: auto;    
+        padding: 40px;  
+        background: none;  
+        border-radius: 15px ;  
+          
+}  
+h2{  
+    text-align: center;  
+    color: #277582;  
+    padding: 15px;  
+}  
+label{  
+    font-size: 15px;  
+}  
+input[type=text],
+textarea[type=text] {  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+input[type=submit]{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;   
+    color: #ffffff;
+    background: #e65e6b;
+}  
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+#viewAll{  
+    padding: 20px;
+    font-size: large;
+    float: right;  
+}  
+#back{  
+    padding: 20px;
+    font-size: large;
+    float: left;  
+}  
+
+#SuccessMessage{
+    color: rgb(25, 136, 25);
+    padding-bottom: 15px;
+}
